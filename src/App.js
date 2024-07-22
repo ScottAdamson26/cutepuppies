@@ -33,8 +33,7 @@ function App() {
       positions[shuffledPositions[index]] = image;
     });
     setImagePositions(positions);
-  }, []);
-
+  }, [buttonPositions, images]);
   const handleButtonClick = (pos) => {
     if (revealedImages.length < totalImages && !revealedImages.some(item => item.pos === pos) && !wrongGuesses.includes(pos)) {
       if (imagePositions[pos]) {
