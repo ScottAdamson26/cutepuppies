@@ -25,6 +25,14 @@ function App() {
     return array;
   };
 
+  // Preload images
+  const preloadImages = (imageUrls) => {
+    imageUrls.forEach((url) => {
+      const img = new Image();
+      img.src = url;
+    });
+  };
+
   // Assign images to random positions at the start
   useEffect(() => {
     const shuffledPositions = shuffleArray(buttonPositions.slice());
@@ -33,6 +41,7 @@ function App() {
       positions[shuffledPositions[index]] = image;
     });
     setImagePositions(positions);
+    preloadImages(images);
   }, [buttonPositions, images]);
 
   const handleButtonClick = (pos) => {
