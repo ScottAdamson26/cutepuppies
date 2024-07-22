@@ -77,6 +77,11 @@ function App() {
           </div>
         ))}
       </div>
+      {gameOver && (
+        <div className="mt-4 p-4 rounded-lg shadow-lg max-w-md text-center text-white bg-gradient-to-r from-sky-300 to-sky-400">
+          Game Over! You found all the Jellycats!
+        </div>
+      )}
       <div className="grid grid-cols-3 gap-4 p-4">
         {buttonPositions.map((pos) => (
           <div
@@ -98,11 +103,7 @@ function App() {
           </div>
         ))}
       </div>
-      {gameOver && (
-        <div className="mt-4 p-4 rounded-lg shadow-lg max-w-md text-center text-white bg-gradient-to-r from-sky-300 to-sky-400">
-          Game Over! You found all the Jellycats!
-        </div>
-      )}
+      
     </div>
   );
 }
