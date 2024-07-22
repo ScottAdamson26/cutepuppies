@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import './App.css';
@@ -9,9 +9,9 @@ function App() {
   const [gameOver, setGameOver] = useState(false);
   const [imagePositions, setImagePositions] = useState({});
 
-  const images = [
+  const images = useMemo(() => [
     'dogs1.jpg', 'dogs2.webp', 'dogs3.jpg', 'dogs4.jpg', 'dogs5.jpg', 'dogs6.jpg',
-  ];
+  ], []); // Use useMemo to memoize the images array
 
   const totalImages = images.length; // Total number of images to reveal
   const buttonPositions = Array.from({ length: 12 }, (_, index) => index + 1); // 12 button positions
@@ -34,6 +34,7 @@ function App() {
     });
     setImagePositions(positions);
   }, [buttonPositions, images]);
+
   const handleButtonClick = (pos) => {
     if (revealedImages.length < totalImages && !revealedImages.some(item => item.pos === pos) && !wrongGuesses.includes(pos)) {
       if (imagePositions[pos]) {
@@ -52,7 +53,7 @@ function App() {
   const getImage = (pos) => revealedImages.find(item => item.pos === pos)?.image;
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen px-4 py-12">
+    <div className="flex flex-col justify-center items-center h-screen p-4">
       <h1 className="text-2xl font-bold mb-4">Find the Jellycats!</h1>
       <div className="flex flex-wrap mb-4 space-x-2">
         {revealedImages.map((_, index) => (
