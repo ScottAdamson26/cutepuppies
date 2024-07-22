@@ -11,10 +11,10 @@ function App() {
 
   const images = useMemo(() => [
     'dogs1.jpg', 'dogs2.webp', 'dogs3.jpg', 'dogs4.jpg', 'dogs5.jpg', 'dogs6.jpg',
-  ], []); // Use useMemo to memoize the images array
+  ], []);
 
   const totalImages = images.length; // Total number of images to reveal
-  const buttonPositions = Array.from({ length: 12 }, (_, index) => index + 1); // 12 button positions
+  const buttonPositions = useMemo(() => Array.from({ length: 12 }, (_, index) => index + 1), []);
 
   // Function to shuffle an array
   const shuffleArray = (array) => {
