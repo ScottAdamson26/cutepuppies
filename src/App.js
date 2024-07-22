@@ -55,6 +55,7 @@ function App() {
   return (
     <div className="flex flex-col justify-center items-center h-screen p-4">
       <h1 className="text-2xl font-bold mb-4">Find the Jellycats!</h1>
+      <p className="mb-4 text-center">Click on the squares to reveal the hidden Jellycats. Try to find all 6 Jellycats!</p>
       <div className="flex flex-wrap mb-4 space-x-2">
         {revealedImages.map((_, index) => (
           <div key={index} className="w-8 h-8 bg-gradient-to-r from-green-400 to-green-500 text-white flex items-center justify-center rounded-md m-1">
